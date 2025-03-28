@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayableDirector timelineDirector;
+
+    void LaunchLeavingPlanetAnimation()
     {
-        
+        timelineDirector.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadFirePlanet()
     {
-        
+        LaunchLeavingPlanetAnimation();
     }
 
-    public void LoadTestScene()
+    public void LoadWaterPlanet()
     {
-        SceneManager.LoadScene(1);
+        LaunchLeavingPlanetAnimation();
+    }
+
+    public void LoadWindPlanet()
+    {
+        LaunchLeavingPlanetAnimation();
     }
 }
