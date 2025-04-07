@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class CameraChangeCollider : MonoBehaviour
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Playables;
+
+public class LavaLampColliderScript : MonoBehaviour
 {
-    public GameObject cameraToEnable;
+    public PlayableDirector entryTimelineToPlay;
+    public GameObject vCameraToDisable;
 
 
     void OnTriggerEnter(Collider collider)
@@ -15,15 +21,16 @@ public class CameraChangeCollider : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             // fire an event giving the entering gameObject and this checkpoint
-            cameraToEnable.SetActive(true);
+            entryTimelineToPlay.Play();
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            cameraToEnable.SetActive(false);
+            entryTimelineToPlay.Stop();
+            vCameraToDisable.SetActive(false);
         }
     }
 }

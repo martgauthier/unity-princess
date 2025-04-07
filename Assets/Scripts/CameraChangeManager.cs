@@ -4,32 +4,23 @@ using UnityEngine.Playables;
 
 public class CameraChangeManager : MonoBehaviour
 {
-    public GameObject followVirtualCamera;
-    public GameObject fixedPointVirtualCamera;
-    public PlayableDirector timeline;
+    public GameObject followOutsideVirtualCamera;
+    public GameObject lookAtInsideVCamera;
+    public GameObject flowerCamera;
 
     void Start()
     {
     }
 
-    public void OnFollowPlayerColliderEnter(GameObject go, CameraChangeCollider collider)
+    public void OnPalaceInsideEnter()
     {
-        Debug.Log("Entered follow player collider !");
-        followVirtualCamera.SetActive(true);
-        fixedPointVirtualCamera.SetActive(false);
+        followOutsideVirtualCamera.SetActive(false);
+        lookAtInsideVCamera.SetActive(true);
     }
 
-    public void OnFixedPointCameraColliderEnter(GameObject go, CameraChangeCollider collider)
+    public void OnFlowerColliderEnter()
     {
-        Debug.Log("Entered fixed point collider !");
-        followVirtualCamera.SetActive(false);
-        fixedPointVirtualCamera.SetActive(true);
-    }
-
-    public void OnTimelineStartColliderEnter(GameObject go, CameraChangeCollider collider)
-    {
-        Debug.Log("Timeline started !");
-        timeline.Play();
-        OnFollowPlayerColliderEnter(go, collider);//also turn back to the initial state
+        lookAtInsideVCamera.SetActive(false);
+        flowerCamera.SetActive(true);
     }
 }
