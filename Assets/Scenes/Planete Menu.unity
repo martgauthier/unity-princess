@@ -233,8 +233,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18989573}
-  m_LocalRotation: {x: 0.07577494, y: 0.37200195, z: 0.03160461, w: -0.924594}
-  m_LocalPosition: {x: 2952, y: 285, z: -506}
+  m_LocalRotation: {x: 0.07495318, y: 0.3704822, z: 0.030403348, w: -0.9253111}
+  m_LocalPosition: {x: 2592.775, y: 265.53476, z: -217.07996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -775,6 +775,8 @@ GameObject:
   - component: {fileID: 621556853}
   - component: {fileID: 621556852}
   - component: {fileID: 621556851}
+  - component: {fileID: 621556855}
+  - component: {fileID: 621556856}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -867,6 +869,92 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &621556855
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621556850}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &621556856
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621556850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &660539513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660539514}
+  - component: {fileID: 660539515}
+  m_Layer: 0
+  m_Name: MenuEntryTimeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &660539514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660539513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.882292, y: 16.302675, z: -38.04126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &660539515
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660539513}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: e932908e61e19124eb0fb49195e7f544, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 896051930827681995, guid: e932908e61e19124eb0fb49195e7f544, type: 2}
+    value: {fileID: 1451431431}
+  - key: {fileID: 4057993393009737932, guid: e932908e61e19124eb0fb49195e7f544, type: 2}
+    value: {fileID: 621556856}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &749388339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,7 +1562,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451431427}
-  m_LocalRotation: {x: 0.07577166, y: 0.3720026, z: 0.031612746, w: -0.9245936}
+  m_LocalRotation: {x: 0.07577167, y: 0.37200263, z: 0.031612746, w: -0.9245937}
   m_LocalPosition: {x: 2952, y: 285, z: -506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1500,8 +1588,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -4376539228009717080, guid: b5d3e966a899ab047be1be0f41a6f1ab, type: 2}
     value: {fileID: 1451431431}
-  - key: {fileID: -426003954783820613, guid: b5d3e966a899ab047be1be0f41a6f1ab, type: 2}
-    value: {fileID: 621556850}
+  - key: {fileID: 4989911262622841927, guid: b5d3e966a899ab047be1be0f41a6f1ab, type: 2}
+    value: {fileID: 621556856}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &1451431431
