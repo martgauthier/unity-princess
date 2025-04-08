@@ -178,6 +178,7 @@ MonoBehaviour:
   coloredStatusPlane: {fileID: 1868257436}
   audioLoop: {fileID: 1125582824}
   bpm: 117
+  timeDurationExponent: 1
 --- !u!1001 &400859035
 PrefabInstance:
   m_ObjectHideFlags: 0
