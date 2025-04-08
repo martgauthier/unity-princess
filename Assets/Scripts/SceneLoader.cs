@@ -17,6 +17,8 @@ public class SceneLoader : MonoBehaviour
     public void LoadFirePlanet()
     {
         LaunchLeavingPlanetAnimation();
+
+        LaunchFirePlanetAfterTimeout();
     }
 
     public void LoadWaterPlanet()
@@ -31,6 +33,8 @@ public class SceneLoader : MonoBehaviour
     public void LoadWindPlanet()
     {
         LaunchLeavingPlanetAnimation();
+
+        LaunchWindPlanetAfterTimeout();
     }
 
     async void LaunchWaterPlanetAfterTimeout()
@@ -38,5 +42,19 @@ public class SceneLoader : MonoBehaviour
         await Task.Delay(1750);//duration of the timeline in milliseconds
         Debug.Log("Water scene started !");
         SceneManager.LoadScene(1, LoadSceneMode.Single);//id of the water scene
+    }
+
+    async void LaunchWindPlanetAfterTimeout()
+    {
+        await Task.Delay(1750);//duration of the timeline in milliseconds
+        Debug.Log("Water scene started !");
+        SceneManager.LoadScene(2, LoadSceneMode.Single);//id of the water scene
+    }
+
+    async void LaunchFirePlanetAfterTimeout()
+    {
+        await Task.Delay(1750);//duration of the timeline in milliseconds
+        Debug.Log("Water scene started !");
+        SceneManager.LoadScene(3, LoadSceneMode.Single);//id of the water scene
     }
 }
