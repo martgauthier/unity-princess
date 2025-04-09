@@ -13,6 +13,9 @@ public class LavaLampColliderScript : MonoBehaviour
     public PlayableDirector entryTimelineToPlay;
     public GameObject vCameraToDisable;
 
+    public UnityEvent<GameObject> onColliderEnter;
+    public UnityEvent onColliderExit;
+
 
     void OnTriggerEnter(Collider collider)
     {
@@ -22,6 +25,7 @@ public class LavaLampColliderScript : MonoBehaviour
         {
             // fire an event giving the entering gameObject and this checkpoint
             entryTimelineToPlay.Play();
+            if (onColliderEnter != null) onColliderEnter.Invoke(this.gameObject);
         }
     }
 
@@ -31,6 +35,7 @@ public class LavaLampColliderScript : MonoBehaviour
         {
             entryTimelineToPlay.Stop();
             vCameraToDisable.SetActive(false);
+            onColliderExit.Invoke();
         }
     }
 }

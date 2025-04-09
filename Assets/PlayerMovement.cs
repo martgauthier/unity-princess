@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        Debug.Log("PlayerMovement script started");
     }
 
     void Update()

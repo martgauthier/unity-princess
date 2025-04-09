@@ -36,19 +36,15 @@ public class IceFadeOut : MonoBehaviour
         fadeMaterial.renderQueue = 3000;
     }
 
-    void Update()
+
+    public void OnFadeOutColliderEnter()
     {
-        if (hasFaded) return;
-
-        float distance = Vector3.Distance(player.position, transform.position);
-        if (distance <= activationDistance)
-        {
-            StartCoroutine(FadeOut());
-            hasFaded = true;
-        }
+        hasFaded = true;
+        StartCoroutine(FadeOutAnim());
     }
+    
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOutAnim()
     {
         float elapsed = 0f;
         Color color = fadeMaterial.color;
