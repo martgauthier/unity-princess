@@ -14,6 +14,7 @@ public class LavaLampColliderScript : MonoBehaviour
     public GameObject vCameraToDisable;
 
     public UnityEvent onColliderEnter;
+    public UnityEvent onColliderExit;
 
 
     void OnTriggerEnter(Collider collider)
@@ -34,6 +35,7 @@ public class LavaLampColliderScript : MonoBehaviour
         {
             entryTimelineToPlay.Stop();
             vCameraToDisable.SetActive(false);
+            onColliderExit.Invoke();
         }
     }
 }

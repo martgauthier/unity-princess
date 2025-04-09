@@ -7,6 +7,7 @@ public class CameraChangeCollider : MonoBehaviour
 {
     public GameObject cameraToEnable;
     public UnityEvent onColliderEnter;
+    public UnityEvent onColliderExit;
 
 
     void OnTriggerEnter(Collider collider)
@@ -26,6 +27,7 @@ public class CameraChangeCollider : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             cameraToEnable.SetActive(false);
+            onColliderExit.Invoke();
         }
     }
 }
