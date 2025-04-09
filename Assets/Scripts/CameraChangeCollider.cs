@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class CameraChangeCollider : MonoBehaviour
 {
     public GameObject cameraToEnable;
+    public UnityEvent onColliderEnter;
 
 
     void OnTriggerEnter(Collider collider)
@@ -16,6 +17,7 @@ public class CameraChangeCollider : MonoBehaviour
         {
             // fire an event giving the entering gameObject and this checkpoint
             cameraToEnable.SetActive(true);
+            if(onColliderEnter != null) onColliderEnter.Invoke();
         }
     }
 
