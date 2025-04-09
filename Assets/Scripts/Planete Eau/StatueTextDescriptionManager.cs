@@ -8,6 +8,8 @@ public class StatueTextDescriptionManager : MonoBehaviour
 
     public GameObject spaceBarImg;
 
+    private GameObject listenedGameObject;
+
     void Start()
     {
         
@@ -19,9 +21,10 @@ public class StatueTextDescriptionManager : MonoBehaviour
         spaceBarImg.SetActive(false);
     }
 
-    public void StartListeningToSpacebar() {
+    public void StartListeningToSpacebar(GameObject gameObject) {
         shouldListenToSpacebar = true;
         spaceBarImg.SetActive(true);
+        listenedGameObject = gameObject;
     }
 
     // Update is called once per frame
@@ -29,9 +32,10 @@ public class StatueTextDescriptionManager : MonoBehaviour
     {
         if (!shouldListenToSpacebar) return;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("He wants to start an animation !");
+            Debug.Log("He wants to start an animation for the collider : !");
+            Debug.Log(listenedGameObject.tag);
         }
     }
 
