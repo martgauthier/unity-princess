@@ -5552,6 +5552,8 @@ PlayableDirector:
     value: {fileID: 1937938633}
   - key: {fileID: -942114196900813261, guid: 643e61f6b9aed9a40a7d4534bd16e0d8, type: 2}
     value: {fileID: 131779327}
+  - key: {fileID: 2026414354861062558, guid: 643e61f6b9aed9a40a7d4534bd16e0d8, type: 2}
+    value: {fileID: 1598252255}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1459722010
@@ -6532,20 +6534,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 83ee7b683e727764d9b93752fa8226fb, type: 3}
   m_PrefabInstance: {fileID: 1750833522}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1750833524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750833523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e043ac13ae4c0b4da6f878c38a2467b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rotationSpeed: 200
 --- !u!95 &1750833525
 Animator:
   serializedVersion: 5
@@ -6580,22 +6568,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1750833527
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750833523}
-  serializedVersion: 2
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!1 &1758516256
 GameObject:
   m_ObjectHideFlags: 0
