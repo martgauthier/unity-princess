@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class StatueTextDescriptionManager : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class StatueTextDescriptionManager : MonoBehaviour
     public GameObject spaceBarImg;
 
     private GameObject listenedGameObject;
+
+    public PlayableDirector flowerTimeline;
+    public PlayableDirector lavalampTimeline;
+    public PlayableDirector champignonTimeline;
+
+
 
     void Start()
     {
@@ -36,11 +44,34 @@ public class StatueTextDescriptionManager : MonoBehaviour
         {
             Debug.Log("He wants to start an animation for the collider : !");
             Debug.Log(listenedGameObject.tag);
+
+            if(listenedGameObject.CompareTag("flower_collider"))
+            {
+                Debug.Log("launch specific flower animation");
+                flowerTimeline.Play();
+                shouldListenToSpacebar = false;//to prevent calling multiple times the timeline
+                StartListeningToSpacebarAfterTimeout();
+            }
+            else if(listenedGameObject.CompareTag("lavalamp_collider"))
+            {
+                Debug.Log("launch specific lavalamp animation");
+                lavalampTimeline.Play();
+                shouldListenToSpacebar = false;//to prevent calling multiple times the timeline
+                StartListeningToSpacebarAfterTimeout();
+            }
+            else if(listenedGameObject.CompareTag("hajar_collider"))
+            {
+                Debug.Log("launch specific champignon animation");
+                champignonTimeline.Play();
+                shouldListenToSpacebar = false;//to prevent calling multiple times the timeline
+                StartListeningToSpacebarAfterTimeout();
+            }
         }
     }
 
-    void StartAppropriateTextCinematic()
+    async void StartListeningToSpacebarAfterTimeout()
     {
-        //todo
+        await Task.Delay(5000);//duration of the timeline
+        StartListeningToSpacebar(listenedGameObject);
     }
 }
