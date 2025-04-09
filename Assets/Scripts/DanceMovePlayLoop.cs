@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class DanceMovePlayLoop : MonoBehaviour
 {
@@ -21,7 +24,8 @@ public class DanceMovePlayLoop : MonoBehaviour
     //touches qui permettent de tenter les autres vraies animations. L'ordre des touches doit être le même que l'ordre des triggers fourni
     public List<KeyCode> animationsIndexPerKeycode = new List<KeyCode> { KeyCode.Z, KeyCode.E, KeyCode.R}; //should not contain the same keycode as "idleAnimationGuessKeyCode"
 
-    public Renderer coloredStatusPlane;
+    public PlayableDirector successTimeline;
+    public PlayableDirector failureTimeline;
 
     private bool playerCanPlay;
 
@@ -37,6 +41,11 @@ public class DanceMovePlayLoop : MonoBehaviour
 
     public uint timeDurationExponent;
 
+    private uint goodMovesCounter;
+    private uint totalMovesCounter;
+
+    public TextMeshProUGUI scoreText;
+
     void Start()
     {
         beatDurationInSeconds = 60.0f / bpm;//durée d'un temps
@@ -49,9 +58,8 @@ public class DanceMovePlayLoop : MonoBehaviour
 
     IEnumerator GameLoop()
     {
-        while (true)
-        {
-            Debug.Log("First");
+        while (true) {
+            /*Debug.Log("First");
             //Give a little pause
             SetGameSituationToIdle();
             yield return new WaitForSeconds(timeBetweenMoves);
@@ -67,10 +75,18 @@ public class DanceMovePlayLoop : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenMoves);
 
             Debug.Log("Fourth");
-            //HERE ! The player has to reproduce the move
-            TriggerStatueMove(triggeredStatueMove);
+            //HERE ! The player has to reproduce the move*/
+
+            //First wait
+
+            SetGameSituationToIdle();
+            //yield return new WaitForSeconds(timeBetweenMoves);
+
+            TriggerRandomStatueMove();
             playerCanPlay = true;
             yield return new WaitForSeconds(timeBetweenMoves);
+            totalMovesCounter++;
+            scoreText.text="Score : " + goodMovesCounter.ToString() + " / " + totalMovesCounter;
         }
     }
 
@@ -95,7 +111,6 @@ public class DanceMovePlayLoop : MonoBehaviour
      */
     void SetGameSituationToIdle()
     {
-        coloredStatusPlane.material.color = Color.white;
         currentStatueAnimationIndex = -1;//equals to the IndexOf A in "indexesPerKeycode"
         playerCanPlay = false;
         playerHasAlreadyTried = false;
@@ -142,11 +157,14 @@ public class DanceMovePlayLoop : MonoBehaviour
 
         if (animationToStartIndex == currentStatueAnimationIndex)
         {
-            coloredStatusPlane.material.color = Color.green;
+            failureTimeline.Stop();
+            successTimeline.Play();
+            goodMovesCounter++;
         }
         else
         {
-            coloredStatusPlane.material.color = Color.red;
+            successTimeline.Stop();
+            failureTimeline.Play();
         }
     }
 
