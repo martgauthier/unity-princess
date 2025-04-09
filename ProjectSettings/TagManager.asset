@@ -6,6 +6,9 @@ TagManager:
   tags:
   - FollowPlayerVirtualCameraCollider
   - FixedPointVirtualCameraCollider
+  - flower_collider
+  - lavalamp_collider
+  - hajar_collider
   layers:
   - Default
   - TransparentFX
