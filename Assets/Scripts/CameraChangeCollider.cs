@@ -5,14 +5,25 @@ using UnityEngine.Events;
 
 public class CameraChangeCollider : MonoBehaviour
 {
-    public UnityEvent<GameObject, CameraChangeCollider> onColliderEnter;
+    public GameObject cameraToEnable;
+
+
     void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("Entered a collider !");
         // if entering object is tagged as the Player
-        if (collider.gameObject.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
             // fire an event giving the entering gameObject and this checkpoint
-            onColliderEnter.Invoke(collider.gameObject, this);
+            cameraToEnable.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            cameraToEnable.SetActive(false);
         }
     }
 }
