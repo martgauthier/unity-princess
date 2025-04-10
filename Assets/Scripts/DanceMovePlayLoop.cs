@@ -49,7 +49,8 @@ public class DanceMovePlayLoop : MonoBehaviour
 
     private bool soundHasEnded = false;
 
-    public PlayableDirector endingTimeline;
+    public PlayableDirector goodEndingTimeline;
+    public PlayableDirector badEndingTimeline;
 
     void Start()
     {
@@ -101,7 +102,14 @@ public class DanceMovePlayLoop : MonoBehaviour
                 Debug.Log("Audio is done !");
                 SetGameSituationToIdle();
                 playerCanPlay = false;
-                endingTimeline.Play();
+                if (goodMovesCounter >= 10)
+                {
+                    goodEndingTimeline.Play();
+                }
+                else
+                {
+                    badEndingTimeline.Play();
+                }
                 break;
             }
         }
