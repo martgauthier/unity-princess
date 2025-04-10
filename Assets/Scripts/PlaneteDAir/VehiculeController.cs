@@ -22,7 +22,7 @@ public class VehiculeController : MonoBehaviour {
     {
         inputY = Input.GetAxis("Vertical");
         inputX = Input.GetAxis("Horizontal");
-        Debug.Log(inputX + "," + inputY);
+        //Debug.Log(inputX + "," + inputY);
     }
 
     void FixedUpdate() // Apply physics here
