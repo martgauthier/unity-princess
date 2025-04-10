@@ -19,6 +19,7 @@ public class FirePlanetLeavingSceneLoader : MonoBehaviour
 
     public void GoBackToMenu()
     {
+        CrownManager.Instance.VisitPlanet("Fire"); 
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

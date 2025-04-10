@@ -19,6 +19,14 @@ public class WaterPlanetSceneManager : MonoBehaviour
     async void LaunchMenuPlanetAfterDelay()
     {
         await Task.Delay(1860);//the duration of the animation
+        if (CrownManager.Instance != null)
+        {
+            CrownManager.Instance.VisitPlanet("Water"); // Attention majuscule
+        }
+        else
+        {
+            Debug.LogWarning("CrownManager.Instance est null !");
+        }
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }
