@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events; // needed to use UnityEvent
 public class Checkpoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public UnityEvent<GameObject, Checkpoint> onCheckpointEnter;
+    void OnTriggerEnter(Collider collider)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // if entering object is tagged as the Player
+        if (collider.gameObject.tag == "Player")
+        {
+            // fire an event giving the entering gameObject and this checkpoint
+            onCheckpointEnter.Invoke(collider.gameObject, this);
+        }
     }
 }
