@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
@@ -46,13 +47,20 @@ public class DanceMovePlayLoop : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
 
+    private bool soundHasEnded = false;
+
+    public PlayableDirector endingTimeline;
+
     void Start()
     {
         beatDurationInSeconds = 60.0f / bpm;//durée d'un temps
         timeBetweenMoves = beatDurationInSeconds * (float)Math.Pow(2, timeDurationExponent);
+    }
 
+    public void StartGameWhenReady()
+    {
         audioLoop.Play();
-
+        soundHasEnded = false;
         StartCoroutine(GameLoop());
     }
 
@@ -87,6 +95,15 @@ public class DanceMovePlayLoop : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenMoves);
             totalMovesCounter++;
             scoreText.text="Score : " + goodMovesCounter.ToString() + " / " + totalMovesCounter;
+
+            if (!audioLoop.isPlaying && !soundHasEnded)
+            {
+                Debug.Log("Audio is done !");
+                SetGameSituationToIdle();
+                playerCanPlay = false;
+                endingTimeline.Play();
+                break;
+            }
         }
     }
 
