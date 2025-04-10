@@ -31,6 +31,8 @@ public class AIControls : MonoBehaviour
     {
         // Start with first waypoint
         SelectWaypoint(waypoints[0]);
+        Debug.Log("First waypoint : ");
+        Debug.Log(nextWaypointPosition);
     }
 
     void Update()
