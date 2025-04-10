@@ -11,12 +11,19 @@ public class PrincessCrown : MonoBehaviour
 
     private void Start()
     {
-        if (CrownManager.Instance == null) return;
+        StartCoroutine(SpawnGemsDelayed());
+    }
+
+    private IEnumerator SpawnGemsDelayed()
+    {
+        yield return new WaitForSeconds(0.1f); // attendre un peu
+
+        if (CrownManager.Instance == null) yield break;
 
         foreach (string planet in CrownManager.Instance.visitedPlanets)
         {
             GameObject gemToSpawn = null;
-            Vector3 positionOffset = Vector3.zero; // 🔥 Position différente selon le joyau
+            Vector3 positionOffset = Vector3.zero;
 
             switch (planet)
             {
@@ -37,12 +44,12 @@ public class PrincessCrown : MonoBehaviour
             if (gemToSpawn != null && crownAttachPoint != null)
             {
                 GameObject gem = Instantiate(gemToSpawn, crownAttachPoint);
-                gem.transform.localPosition = positionOffset; 
+                gem.transform.localPosition = positionOffset;
+                gem.transform.localRotation = Quaternion.identity;
+                gem.transform.localScale = Vector3.one;
                 gem.AddComponent<GemPop>();
-
             }
         }
     }
-
 }
 
