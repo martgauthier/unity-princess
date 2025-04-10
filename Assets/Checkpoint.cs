@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.Events; // needed to use UnityEvent
 public class Checkpoint : MonoBehaviour
 {
-    public UnityEvent<GameObject, Checkpoint> onCheckpointEnter;
+    public UnityEvent<CarIdentity, Checkpoint> onCheckpointEnter;
     void OnTriggerEnter(Collider collider)
     {
         // if entering object is tagged as the Player
-        if (collider.gameObject.tag == "Player")
+        if (collider.GetComponent<CarIdentity>() != null)
         {
             // fire an event giving the entering gameObject and this checkpoint
-            onCheckpointEnter.Invoke(collider.gameObject, this);
+            onCheckpointEnter.Invoke(collider.GetComponent<CarIdentity>(), this);
         }
     }
 }

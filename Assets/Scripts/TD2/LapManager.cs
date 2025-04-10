@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class LapManager : MonoBehaviour
 {
-    public List<SimpleCheckpoint> checkpoints;
+    public List<Checkpoint> checkpoints;
     public int totalLaps = 3;
     public UIManager ui;
 
@@ -26,13 +26,13 @@ public class LapManager : MonoBehaviour
 
     private void ListenCheckpoints(bool subscribe)
     {
-        foreach(SimpleCheckpoint checkpoint in checkpoints) {
+        foreach(Checkpoint checkpoint in checkpoints) {
             if(subscribe) checkpoint.onCheckpointEnter.AddListener(CheckpointActivated);
             else checkpoint.onCheckpointEnter.RemoveListener(CheckpointActivated);
         }
     }
 
-    public void CheckpointActivated(CarIdentity car, SimpleCheckpoint checkpoint)
+    public void CheckpointActivated(CarIdentity car, Checkpoint checkpoint)
     {
         PlayerRank player = playerRanks.Find((rank) => rank.identity == car);
         if (checkpoints.Contains(checkpoint) && player!=null)
