@@ -12,6 +12,11 @@ public class PlayersControl : MonoBehaviour
 
     public UnityEvent<Vector2> onInput;
 
+    public Animator voileAnimator;
+    public Animator fanAnimator;
+
+    private bool shouldDrive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,20 @@ public class PlayersControl : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
         inputX = Input.GetAxis("Horizontal");
         normalizedInput=new Vector2(inputX, inputY).normalized;
+
+        if(inputY > 0 && !shouldDrive)
+        {
+            shouldDrive = true;
+            voileAnimator.SetTrigger("gonfle_on");
+            fanAnimator.SetTrigger("ventilateur_on");
+        }
+        else if(shouldDrive && inputY == 0)
+        {
+            shouldDrive = false;
+            voileAnimator.SetTrigger("gonfle_off");
+            fanAnimator.SetTrigger("ventilateur_off");
+        }
+
         onInput.Invoke(normalizedInput);
     }
 }
