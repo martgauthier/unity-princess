@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using UnityEngine.Windows;
 
 public class AIControls : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class AIControls : MonoBehaviour
     public float minDistanceMoved = 0.5f;
 
     private bool isUnstucking = false;
+
+    public Animator voileAnimator;
+    public Animator fanAnimator;
+
+    private bool shouldDrive;
 
     void Awake()
     {
@@ -82,6 +88,19 @@ public class AIControls : MonoBehaviour
             {
                 Debug.Log($"{gameObject.name} glisse en biais, recentrage...");
                 input = new Vector2(Mathf.Sign(componentRight), -1f); // tourne + recule
+            }
+
+            if (input.y > 0 && !shouldDrive)
+            {
+                shouldDrive = true;
+                voileAnimator.SetTrigger("gonfle_on");
+                fanAnimator.SetTrigger("ventilateur_on");
+            }
+            else if(shouldDrive && input.y == 0)
+            {
+                shouldDrive = false;
+                voileAnimator.SetTrigger("gonfle_off");
+                fanAnimator.SetTrigger("ventilateur_off");
             }
 
 
