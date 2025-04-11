@@ -73,6 +73,7 @@ public class LapManager : MonoBehaviour
                     {
                         Debug.Log("Display start menu !");
                         onPlayerFinished.Invoke();
+                        CrownManager.Instance.VisitPlanet("Air"); 
                     }
                 }
                 else {
