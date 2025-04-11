@@ -30,14 +30,14 @@ public class CrownManager : MonoBehaviour
 
 	private void Start()
 	{
-/*
+
     	if (visitedPlanets.Count < 3)
     	{
         	visitedPlanets.Add("Water");
         	visitedPlanets.Add("Fire");
         	visitedPlanets.Add("Air");
     	}
-*/
+
 
 		StartCoroutine(CheckVictoryCondition());
 
@@ -89,7 +89,7 @@ public class CrownManager : MonoBehaviour
     Vector3 startScale = gem.localScale;
 
     float riseDuration = 2f; // Phase montée
-    float spinDuration = 4f; // Phase tourbillon
+    float spinDuration = 10f; // Phase tourbillon
     float totalDuration = riseDuration + spinDuration;
 
     float elapsed = 0f;
@@ -115,7 +115,7 @@ public class CrownManager : MonoBehaviour
         elapsed += Time.deltaTime;
         float t = Mathf.Clamp01(elapsed / spinDuration);
 
-        float angle = t * 720f; // Deux tours complets (720°)
+        float angle = t * 1050f; // Deux tours complets (720°)
         float radius = Mathf.Lerp(0.5f, 100f, t); // 🌟 Rayon plus large : commence à 0.5 et finit à 2 unités !
 
         Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
