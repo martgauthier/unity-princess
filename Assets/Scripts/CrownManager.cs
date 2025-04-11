@@ -30,7 +30,7 @@ public class CrownManager : MonoBehaviour
 
 	private void Start()
 	{
-
+/*
     	if (visitedPlanets.Count < 3)
     	{
         	visitedPlanets.Add("Water");
@@ -38,7 +38,7 @@ public class CrownManager : MonoBehaviour
         	visitedPlanets.Add("Air");
     	}
 
-
+*/
 		StartCoroutine(CheckVictoryCondition());
 
 	}
@@ -48,7 +48,7 @@ public class CrownManager : MonoBehaviour
     public Animator princessAnimator;       
     public Transform crownAttachPoint;        
     private bool hasCelebrated = false;   
-	public GameObject victoryText; 
+	public Canvas victoryCanvas; 
     
 
     private void Awake()
@@ -81,6 +81,57 @@ public class CrownManager : MonoBehaviour
             visitedPlanets.Add(planetName);
         }
     }
+    private void RefreshReferences()
+    {
+       
+        GameObject princess = GameObject.Find("princess-last-dancing"); // Remplace "Princess" par le vrai nom de ton GameObject princesse si besoin
+
+        if (princess != null)
+        {
+            // Animator
+            if (princessAnimator == null)
+            {
+                princessAnimator = princess.GetComponent<Animator>();
+            }
+
+            // CrownAttachPoint enfant
+            if (crownAttachPoint == null)
+            {
+                Transform crown = princess.transform.Find("CrownAttachmentPoint");
+                if (crown != null)
+                {
+                    crownAttachPoint = crown;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Princess non trouvée dans la scène !");
+        }
+
+        
+        if (gameCanvas == null)
+        {
+            GameObject canvasObj = GameObject.Find("Canvas");
+            if (canvasObj != null)
+            {
+                gameCanvas = canvasObj.GetComponent<Canvas>();
+            }
+        }
+
+        
+        if (victoryCanvas == null)
+        {
+            GameObject victoryObj = GameObject.Find("VictoryCanvas");
+            if (victoryObj != null)
+            {
+                victoryCanvas = victoryObj.GetComponent<Canvas>();
+            }
+        }
+
+    }
+
+
 
     private IEnumerator AnimateGem(Transform gem)
 {
@@ -190,14 +241,17 @@ while (explosionElapsed < explosionDuration)
 
 
 private IEnumerator PlayVictorySequence()
-{	
-	if (gameCanvas != null)
 {
-    foreach (Transform child in gameCanvas.transform)
+    RefreshReferences();
+    yield return new WaitForSeconds(0.1f);
+    if (gameCanvas != null)
     {
-        child.gameObject.SetActive(false); // Désactive tous les textes/images
+        foreach (Transform child in gameCanvas.transform)
+        {
+            child.gameObject.SetActive(false); // Désactive tous les textes/images
+        }
     }
-}
+
     yield return new WaitForSeconds(3f); // Attendre avant de commencer
 
     // Faire monter le CrownAttachPoint
@@ -214,21 +268,27 @@ private IEnumerator PlayVictorySequence()
     // 2. Faire exploser les gems
     if (crownAttachPoint != null)
     {
-		int i = 0;
+        int i = 0;
         foreach (Transform gem in crownAttachPoint)
         {
             StartCoroutine(AnimateGem(gem, i, crownAttachPoint.childCount));
-    		i++;
+            i++;
         }
     }
-if (victoryText != null)
-{
-    victoryText.SetActive(true);
-}
+
+    if (victoryCanvas != null)
+    {
+        foreach (Transform child in victoryCanvas.transform)
+        {
+            child.gameObject.SetActive(true); // active tous les textes/images
+        }
+    }
 }
 
 
-	private IEnumerator CheckVictoryCondition()
+
+
+private IEnumerator CheckVictoryCondition()
 {
     while (visitedPlanets.Count < 3)
     {

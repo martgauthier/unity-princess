@@ -477,7 +477,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 621556853}
   princessAnimator: {fileID: 1830369975}
   crownAttachPoint: {fileID: 1776699685}
-  victoryText: {fileID: 468373681}
+  victoryText: {fileID: 431631255}
 --- !u!4 &242892820
 Transform:
   m_ObjectHideFlags: 0
